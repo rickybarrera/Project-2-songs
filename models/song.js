@@ -4,7 +4,7 @@ const Schema =mongoose.Schema;
 
 const songSchema = new Schema ({
     title: String,
-    releaseDate: Date,
+    releaseYear: String,
     album: String,
     artist: String
 });

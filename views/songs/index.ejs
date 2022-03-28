@@ -14,7 +14,7 @@
       <thead>
         <tr>
           <th> Title </th>
-          <th>Release Date</th>
+          <th>Release Year</th>
           <th>Album</th>
           <th>Artist</th>
         </tr>
@@ -24,10 +24,10 @@
         <% songs.forEach(function(s) { %>
           <tr>
             <td><%= s.title %></td>
-            <td><%= s.releaseDate %></td>
+            <td><%= s.releaseYear %></td>
             <td><%= s.album %></td>
             <td><%= s.artist %></td>
-            <td><a href="/songs/<%= s._id %>">DETAILS</a></td>
+            <!-- <td><a href="/songs/<%= s._id %>">DETAILS</a></td> -->
           </tr>
         <!-- Close the forEach using EJS here -->
       <% }) %>

@@ -10,7 +10,7 @@ module.exports = {
 
 function index(req, res){
 Song.find({}, function(err, songs) {
-    res.render('songs/index', {title: "All Songs", flights});
+    res.render('songs/index', {title: "All Songs", songs});
 });
 }
 function newSong(req, res) {
