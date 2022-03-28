@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <nav>
+      <a href="/songs/new" <%- title === 'Add Song' ? 'class="active"' : '' %>>ADD Song</a>
+      <a href="/songs" <%- title === 'All Songs' ? 'class="active"' : '' %>>ALL Songs</a>
+  </nav>
+  

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <nav>
+      <a href="/songs/new" <%- title === 'Add Song' ? 'class="active"' : '' %>>ADD Song</a>
+      <a href="/songs" <%- title === 'All Songs' ? 'class="active"' : '' %>>ALL Songs</a>
+  </nav>
+    <h1>Song LIst</h1>
+    <table>
+      <thead>
+        <tr>
+          <th> Title </th>
+          <th>Release Date</th>
+          <th>Album</th>
+          <th>Artist</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Write the line of EJS to iterate over movies using forEach -->
+        <% songs.forEach(function(s) { %>
+          <tr>
+            <td><%= s.title %></td>
+            <td><%= s.releaseDate %></td>
+            <td><%= s.album %></td>
+            <td><%= s.artist %></td>
+            <td><a href="/songs/<%= s._id %>">DETAILS</a></td>
+          </tr>
+        <!-- Close the forEach using EJS here -->
+      <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
