@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <a href="/songs/new"></a>ADD song</a>
+        <a href="/songs">All songs</a>
+    </nav>
+<h2>Song Details</h2>
+<section id="show-page">
+    <div> Title: </div>
+    <div><%= song.title %> </div>
+    <div> Release Year </div>
+    <div><%= song.releaseYear %></div>
+    <div>Album</div>
+    <div><%= song.album %> </div>
+    <div>Artist</div>
+    <div><%= song.artist %> </div>
+    <form action="/songs/<%= song._id %>?_method=DELETE" method="post">
+        <button type="submit">X</button>
+    </form>
+</section>
+</body>

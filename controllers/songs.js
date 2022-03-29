@@ -5,7 +5,8 @@ module.exports = {
     index,
     new: newSong,
     create,
-  
+    delete: deleteSong,
+    show
 };
 
 function index(req, res){
@@ -23,4 +24,14 @@ function create(req, res) {
         console.log(song);
         res.redirect('/songs/new');
     });
+}
+function deleteSong(req, res) {
+    Song.findByIdAndRemove (req.params.id, function(err, song){
+        res.redirect('/songs')
+    })
+}
+function show(req, res,) {
+    Song.findById(req.params.id, function(err, song){
+        res.render('songs/show', { title: 'Song Details', song});
+    })
 }
