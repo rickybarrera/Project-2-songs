@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
     <nav>
@@ -21,8 +22,73 @@
     <div><%= song.album %> </div>
     <div>Artist</div>
     <div><%= song.artist %> </div>
+     <!-- <form action="/songs<%= song._id %>?_method=PUT" method="post">
+        <input name="text" value="<%= song.text %>">
+        <button type="submit">UPDATE SONG</button>
+    </form> -->
     <form action="/songs/<%= song._id %>?_method=DELETE" method="post">
-        <button type="submit">X</button>
+        <button type="delete">X</button>
     </form>
+    <br><br>
+<h2>Favorite Part</h2>
+<% if (user) { %>
+  <form id="add-review-form" method="POST" action="/songs/<%= song._id %>/favorites">
+    <label>Favorite Part:</label>
+    <textarea name="content"></textarea>
+    <label>Rating:</label>
+    <select name="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <input type="submit" value="Add Favorite Part">
+  </form>
+<% } %>
+<% if (song.favorites) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+          <th>Favorite Part</th>
+          <th>Rating</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% let total = 0 %>
+        <% song.favorites.forEach(function(f) { %>
+          <% total += f.rating %>
+          <tr>
+            <td class="review-user"><img alt="avatar" src="<%= f.userAvatar %>"><%= f.userName %></td>
+            <td><%= f.createdAt.toLocaleDateString() %></td>
+            <td><%= f.content %></td>
+            <td><%= f.rating %></td>
+            <td>
+              <% if (user && user._id.equals(f.user)) { %>
+                <form action="/favorites/<%= f._id %>?_method=DELETE" method="post">
+                    <button type="delete">X</button>
+                </form> 
+              <% } %>
+            </td> 
+          </tr>
+        <% }); %>
+        <tr>
+          <td colspan="3"></td>
+          <td><strong><%= (total / song.favorites.length).toFixed(1) %></strong></td>
+        </tr>
+      </tbody>
+    </table>
+  <% } else { %>
+    <h5>Nothing Yet</h5>
+  <% } %>
+  
 </section>
 </body>

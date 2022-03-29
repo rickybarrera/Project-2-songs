@@ -6,7 +6,8 @@ module.exports = {
     new: newSong,
     create,
     delete: deleteSong,
-    show
+    show,
+    update
 };
 
 function index(req, res){
@@ -35,3 +36,16 @@ function show(req, res,) {
         res.render('songs/show', { title: 'Song Details', song});
     })
 }
+function update(req, res) {
+    Song.findOneAndUpdate(
+      {_id: req.params.id, userRecommending: req.user._id},
+      // update object with updated properties
+      req.body,
+      // options object with new: true to make sure updated doc is returned
+      {new: true},
+      function(err, song) {
+        if (err || !song) return res.redirect('/songs');
+        res.redirect(`songs/${song._id}`);
+      }
+    );
+  }
