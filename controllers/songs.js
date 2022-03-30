@@ -42,7 +42,7 @@ async function edit(req, res){
     const song1 = await Song.findById(req.params.id)
     console.log(song1);
     res.render('songs/edit', {
-        song: Song.findById(req.params.id)
+        song: song1
     });
 }
 function update(req,res) {
@@ -59,7 +59,7 @@ function update(req,res) {
         {console.log('error')
         return res.redirect('/songs')};
         console.log(song)
-        res.redirect(`songs/${song._id}`);
+        res.redirect(`${song._id}`);
       }
     );
   }
