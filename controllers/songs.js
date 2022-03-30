@@ -37,26 +37,29 @@ function show(req, res,) {
         res.render('songs/show', { title: 'Song Details', song});
     })
 }
-function edit(req, res){
+async function edit(req, res){
+    console.log('edit')
+    const song1 = await Song.findById(req.params.id)
+    console.log(song1);
     res.render('songs/edit', {
         song: Song.findById(req.params.id)
     });
 }
 function update(req,res) {
-    // Song.findOneAndUpdate(
-    //   {_id: req.params.id},
-    //   // update object with updated properties
-    //   req.body,
-    //   // options object with new: true to make sure updated doc is returned
-    //   {new: true},
-    //   function(err, song) {
-    //       console.log('try')
-    //     if (err) 
-    //     {console.log('error')
-    //     return res.redirect('/songs')};
-    //     console.log(song)
-    //     res.redirect(`songs/${song._id}`);
-    //   }
-    // );
     console.log('hitting');
+    Song.findOneAndUpdate(
+      {_id: req.params.id},
+      // update object with updated properties
+      req.body,
+      // options object with new: true to make sure updated doc is returned
+      {new: true},
+      function(err, song) {
+          console.log('try')
+        if (err) 
+        {console.log('error')
+        return res.redirect('/songs')};
+        console.log(song)
+        res.redirect(`songs/${song._id}`);
+      }
+    );
   }
