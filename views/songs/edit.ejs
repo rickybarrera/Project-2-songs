@@ -16,7 +16,7 @@
 </nav>
 <body>
     <h2>Edit Song</h2>
-<form action="/songs/<%= song._id %>" method="PUT">
+<form action="/songs/<%= song._id %>?_method=PUT" method="PUT">
 <label>Song Title:
     <input type ="text" name="title">
 </label><br>
@@ -32,3 +32,4 @@
     <input type="submit" value="Edit Song">
 </form>
 </body>
+</html>
