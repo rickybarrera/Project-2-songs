@@ -7,6 +7,7 @@ module.exports = {
     create,
     delete: deleteSong,
     show,
+    edit,
     update
 };
 
@@ -36,16 +37,26 @@ function show(req, res,) {
         res.render('songs/show', { title: 'Song Details', song});
     })
 }
-function update(req, res) {
-    Song.findOneAndUpdate(
-      {_id: req.params.id, userRecommending: req.user._id},
-      // update object with updated properties
-      req.body,
-      // options object with new: true to make sure updated doc is returned
-      {new: true},
-      function(err, song) {
-        if (err || !song) return res.redirect('/songs');
-        res.redirect(`songs/${song._id}`);
-      }
-    );
+function edit(req, res){
+    res.render('songs/edit', {
+        song: Song.findById(req.params.id)
+    });
+}
+function update(req,res) {
+    // Song.findOneAndUpdate(
+    //   {_id: req.params.id},
+    //   // update object with updated properties
+    //   req.body,
+    //   // options object with new: true to make sure updated doc is returned
+    //   {new: true},
+    //   function(err, song) {
+    //       console.log('try')
+    //     if (err) 
+    //     {console.log('error')
+    //     return res.redirect('/songs')};
+    //     console.log(song)
+    //     res.redirect(`songs/${song._id}`);
+    //   }
+    // );
+    console.log('hitting');
   }

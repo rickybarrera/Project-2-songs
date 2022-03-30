@@ -29,6 +29,7 @@
     <form action="/songs/<%= song._id %>?_method=DELETE" method="post">
         <button type="delete">X</button>
     </form>
+    <a href="/songs/<%=song._id %>/edit">Edit</a>
     <br><br>
 <h2>Favorite Part</h2>
 <% if (user) { %>
