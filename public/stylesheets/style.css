@@ -59,6 +59,7 @@ nav > a.active {
   color: white;
   cursor: default;
 }
+
 #new-form {
   display: grid;
   grid-gap: 10px;
@@ -149,16 +150,7 @@ li {
 .login img {
   height: 30px;
 }
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 34px;
-}
 
-.login img {
-  height: 30px;
-}
 .review-user {
   display: flex;
   justify-content: center;

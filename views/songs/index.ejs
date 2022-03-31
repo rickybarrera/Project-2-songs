@@ -6,7 +6,7 @@
   </head>
   <body>
       <nav>
-        <img src="/images/camera.svg">
+       
         <a href="/songs" <%- title === 'All Songs' ? 'class="active"' : '' %>>ALL Songs</a>
     <% if (user) { %>
       <a href="/songs/new" <%- title === 'Add Song' ? 'class="active"' : '' %>>ADD Song</a>
@@ -15,29 +15,32 @@
         <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
     <% } %>
   </nav>
-    <h1>Song List</h1>
-    <table>
-      <thead>
-        <tr>
-          <th> Title </th>
-          <th>Release Year</th>
-          <th>Album</th>
-          <th>Artist</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Write the line of EJS to iterate over movies using forEach -->
-        <% songs.forEach(function(s) { %>
-          <tr>
-            <td><%= s.title %></td>
-            <td><%= s.releaseYear %></td>
-            <td><%= s.album %></td>
-            <td><%= s.artist %></td>
-            <td><a href="/songs/<%= s._id %>">DETAILS</a></td>
-          </tr>
-        <!-- Close the forEach using EJS here -->
-      <% }) %>
-      </tbody>
-    </table>
-  </body>
-</html>
+  <main>
+      <h1>Song List</h1>
+      <table>
+          <thead>
+              <tr>
+                  <th> Title </th>
+                  <th>Release Year</th>
+                  <th>Album</th>
+                  <th>Artist</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Write the line of EJS to iterate over movies using forEach -->
+                <% songs.forEach(function(s) { %>
+                    <tr>
+                        <td><%= s.title %></td>
+                        <td><%= s.releaseYear %></td>
+                        <td><%= s.album %></td>
+                        <td><%= s.artist %></td>
+                        <td><a href="/songs/<%= s._id %>">DETAILS</a></td>
+                    </tr>
+                    <!-- Close the forEach using EJS here -->
+                    <% }) %>
+                </tbody>
+            </table>
+        </main>
+        </body>
+        </html>
+        

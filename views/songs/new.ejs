@@ -7,33 +7,36 @@
     <title>Document</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
-<nav>
-    <img src="/images/camera.svg">
-    <a href="/songs">ALL Songs</a>
-<% if (user) { %>
-  <a href="/songs/new">ADD Song</a>
-  <a href="/logout">LOG OUT</a>
-<% } else { %>
-    <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
-<% } %>
-</nav>
 <body>
+
+        <nav>
+        <a href="/songs">ALL Songs</a>
+    <% if (user) { %>
+      <a href="/songs/new">ADD Song</a>
+      <a href="/logout">LOG OUT</a>
+    <% } else { %>
+        <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+    <% } %>
+</nav>
+<main>
+
     <h2>Enter a New Song</h2>
-<form action ="/songs" method="POST">
-<label>Song Title:
-    <input type ="text" name="title">
-</label><br>
-<label>Release Year:
-    <input type="text" name="releaseYear">
-</label><br>
-<label>Album:
-    <input type="text" name ="album">
-</label><br>
-<label>Artist:
-    <input type="text" name="artist">
-</label><br>
-    <input type="submit" value="Add Song">
-</form>
+    <form id="new-form" action ="/songs" method="POST">
+        <label>Song Title:
+            <input type ="text" name="title">
+        </label><br>
+        <label>Release Year:
+            <input type="text" name="releaseYear">
+        </label><br>
+        <label>Album:
+            <input type="text" name ="album">
+        </label><br>
+        <label>Artist:
+            <input type="text" name="artist">
+        </label><br>
+        <input type="submit" value="Add Song">
+    </form>
+</main>
 </body>
 </html>
 
