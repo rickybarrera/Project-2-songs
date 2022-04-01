@@ -2,9 +2,10 @@
 <html>
   <head>
     <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-<nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     
     <a href="/songs">ALL Songs</a>
 <% if (user) { %>
@@ -15,21 +16,23 @@
 <% } %>
 </nav>
 <body>
-    <h2>Edit Song</h2>
-<form action="/songs/<%= song._id %>?_method=PUT" method="POST">
-<label>Song Title:
-    <input type ="text" name="title">
-</label><br>
-<label>Release Year:
-    <input type="text" name="releaseYear">
-</label><br>
-<label>Album:
-    <input type="text" name ="album">
-</label><br>
-<label>Artist:
-    <input type="text" name="artist">
-</label><br>
-    <input type="submit" value="Edit Song">
-</form>
+    <main>
+        <h2>Edit Song</h2>
+        <form id="edit-form" action="/songs/<%= song._id %>?_method=PUT" method="POST">
+            <label>Song Title:
+                <input type ="text" name="title">
+            </label><br>
+            <label>Release Year:
+                <input type="text" name="releaseYear">
+            </label><br>
+            <label>Album:
+                <input type="text" name ="album">
+            </label><br>
+            <label>Artist:
+                <input type="text" name="artist">
+            </label><br>
+            <input type="submit" value="Edit Song">
+        </form>
+    </main>
 </body>
 </html>
